@@ -1,12 +1,22 @@
-# Welcome to your CDK Go project!
+Create the app
 
-This is a blank project for CDK development with Go.
+```
+mkdir go-aws
+cd go-aws
+cdk init app --language go
+```
 
-The `cdk.json` file tells the CDK toolkit how to execute your app.
+Prepare env
 
-## Useful commands
+```
+cdk bootstrap
+```
 
- * `cdk deploy`      deploy this stack to your default AWS account/region
- * `cdk diff`        compare deployed stack with current state
- * `cdk synth`       emits the synthesized CloudFormation template
- * `go test`         run unit tests
+Edit `go-aws.go` to refine the stack.
+
+Then
+
+```
+cdk diff
+cdk deploy
+```
