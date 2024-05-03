@@ -1,23 +1,25 @@
 package main
 
 import (
-	"errors"
+	"go-aws/lambda/app"
 
+	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
 )
 
-type MyEvent struct {
-	Username string `json:"username"`
-}
-
-func HandleRequest(event MyEvent) (string, error) {
-	if event.Username == "" {
-		return "", errors.New("username is empty")
-	}
-
-	return "Hello " + event.Username, nil
-}
-
 func main() {
-	lambda.Start(HandleRequest)
+	app := app.New()
+	lambda.Start(func(req events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
+		switch req.Path {
+		case "/register":
+			return app.Handler.RegisterUser(req)
+		case "/login":
+			return app.Handler.LoginUser(req)
+		default:
+			return events.APIGatewayProxyResponse{
+				StatusCode: 404,
+				Body:       "Not Found",
+			}, nil
+		}
+	})
 }

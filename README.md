@@ -6,7 +6,7 @@ cd go-aws
 cdk init app --language go
 ```
 
-Prepare env
+Prepare the environment
 
 ```
 cdk bootstrap

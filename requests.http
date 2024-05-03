@@ -1,0 +1,17 @@
+POST https://9emew9yco0.execute-api.us-east-1.amazonaws.com/prod/register
+Content-Type: application/json
+
+{
+  "username": "hello",
+  "password": "password"
+}
+
+###
+
+POST https://9emew9yco0.execute-api.us-east-1.amazonaws.com/prod/login
+Content-Type: application/json
+
+{
+  "username": "hello",
+  "password": "password2"
+}
